@@ -1,0 +1,19 @@
+import re
+
+# Given text
+text = "I want to travel from delhi to hyderabad with flight number 45678"
+
+# Search for Delhi
+if re.search(r"delhi", text, re.IGNORECASE):
+    text = re.sub(r"delhi", "kolkata", text, flags=re.IGNORECASE)
+
+# Search for Hyderabad
+if re.search(r"hyderabad", text, re.IGNORECASE):
+    text = re.sub(r"hyderabad", "kochi", text, flags=re.IGNORECASE)
+
+# Search for flight number
+if re.search(r"\b\d{5}\b", text):
+    text = re.sub(r"\b\d{5}\b", "67890", text)
+
+# Display the modified text
+print("Updated Text:", text)
