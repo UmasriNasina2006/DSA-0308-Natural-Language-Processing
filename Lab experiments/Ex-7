@@ -1,0 +1,15 @@
+
+import nltk
+
+text = "The smart student reads books"
+
+# Split text into words without downloading punkt_tab
+words = text.split()
+
+# Perform POS tagging
+tags = nltk.pos_tag(words)
+
+print("POS Tagging Result:")
+
+for word, tag in tags:
+    print(word, "->", tag)
