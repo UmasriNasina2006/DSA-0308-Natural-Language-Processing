@@ -1,0 +1,27 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> SG VP1 | PL VP2
+SG -> 'he' | 'she'
+PL -> 'they' | 'we'
+VP1 -> 'plays' | 'runs'
+VP2 -> 'play' | 'run'
+""")
+
+parser = nltk.ChartParser(grammar)
+
+sentences = [
+    "he plays",
+    "they play",
+    "he play",
+    "they plays"
+]
+
+for sentence in sentences:
+    words = sentence.split()
+    result = list(parser.parse(words))
+
+    if result:
+        print(sentence, "-> Correct Agreement")
+    else:
+        print(sentence, "-> Incorrect Agreement")
