@@ -1,0 +1,26 @@
+import nltk
+
+words = ["The", "boy", "is", "playing"]
+
+initial_tags = [
+    ("The", "NN"),
+    ("boy", "NN"),
+    ("is", "NN"),
+    ("playing", "NN")
+]
+
+rules = {
+    "The": "DT",
+    "is": "VBZ",
+    "playing": "VBG"
+}
+
+result = []
+
+for word, tag in initial_tags:
+    if word in rules:
+        tag = rules[word]
+    result.append((word, tag))
+
+print("Initial Tags:", initial_tags)
+print("After Transformation:", result)
