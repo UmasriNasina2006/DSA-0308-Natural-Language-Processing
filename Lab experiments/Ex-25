@@ -1,0 +1,20 @@
+from openai import OpenAI
+
+# Enter your NEW API key locally
+api_key = input("Enter your new API key: ")
+
+client = OpenAI(api_key=api_key)
+
+prompt = "Write a short paragraph about Artificial Intelligence."
+
+try:
+    response = client.responses.create(
+        model="gpt-5.5",
+        input=prompt
+    )
+
+    print("\nGenerated Text:")
+    print(response.output_text)
+
+except Exception as e:
+    print("Error:", e)
