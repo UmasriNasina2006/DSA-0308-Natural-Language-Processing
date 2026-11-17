@@ -1,0 +1,18 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V NP
+Det -> 'the'
+N -> 'girl' | 'apple'
+V -> 'eats'
+""")
+
+parser = nltk.ChartParser(grammar)
+
+sentence = "the girl eats the apple".split()
+
+for tree in parser.parse(sentence):
+    print(tree)
+    tree.draw()
