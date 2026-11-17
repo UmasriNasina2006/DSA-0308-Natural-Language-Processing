@@ -1,0 +1,26 @@
+dictionary = {
+    "hello": "bonjour",
+    "good": "bon",
+    "morning": "matin",
+    "thank": "merci",
+    "you": "vous",
+    "how": "comment",
+    "are": "êtes",
+    "welcome": "bienvenue",
+    "book": "livre",
+    "water": "eau",
+    "friend": "ami",
+    "school": "école"
+}
+
+text = input("Enter English sentence: ")
+
+words = text.lower().split()
+
+translated = []
+
+for word in words:
+    translated.append(dictionary.get(word, word))
+
+print("\nEnglish:", text)
+print("French:", " ".join(translated))
