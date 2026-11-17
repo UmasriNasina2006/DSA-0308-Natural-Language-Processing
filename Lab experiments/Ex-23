@@ -1,0 +1,33 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+text = """
+Python is a programming language.
+Python is used for machine learning.
+Machine learning helps computers learn from data.
+"""
+
+sentences = [
+    s.strip() for s in text.split('.') if s.strip()
+]
+
+vectorizer = TfidfVectorizer()
+matrix = vectorizer.fit_transform(sentences)
+
+similarity = cosine_similarity(matrix)
+
+scores = []
+
+for i in range(len(sentences) - 1):
+    score = similarity[i][i + 1]
+    scores.append(score)
+    print("Sentence Similarity:", round(score, 3))
+
+average = sum(scores) / len(scores)
+
+print("Average Coherence Score:", round(average, 3))
+
+if average >= 0.1:
+    print("Text is Coherent")
+else:
+    print("Text has Low Coherence")
