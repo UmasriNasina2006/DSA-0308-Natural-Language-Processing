@@ -1,0 +1,28 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V NP
+Det -> 'the'
+N -> 'student' | 'book'
+V -> 'reads'
+""")
+
+parser = nltk.ChartParser(grammar)
+
+sentence = "the student reads the book".split()
+
+for tree in parser.parse(sentence):
+    print("Parse Tree:")
+    print(tree)
+
+    print("\nNoun Phrases:")
+    for subtree in tree.subtrees(
+        lambda t: t.label() == 'NP'
+    ):
+        phrase = " ".join(subtree.leaves())
+        print(phrase)
+
+    print("\nSemantic Meaning:")
+    print("The student performs the action of reading a book.")
