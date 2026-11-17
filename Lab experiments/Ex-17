@@ -1,0 +1,19 @@
+import nltk
+from nltk.corpus import wordnet
+
+try:
+    wordnet.synsets("book")
+
+    word = "book"
+    synsets = wordnet.synsets(word)
+
+    print("Word:", word)
+
+    for syn in synsets[:5]:
+        print("\nSynset:", syn.name())
+        print("Meaning:", syn.definition())
+        print("Examples:", syn.examples())
+
+except LookupError:
+    print("WordNet dataset is not installed.")
+    print("Please install WordNet using nltk.download('wordnet')")
