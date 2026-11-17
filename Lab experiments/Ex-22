@@ -1,0 +1,15 @@
+import re
+
+text = "John bought a car. He likes it."
+
+words = re.findall(r'\b[A-Za-z]+\b', text)
+
+nouns = []
+pronouns = ["he", "she", "it", "they"]
+
+for i, word in enumerate(words):
+    if word.lower() in pronouns:
+        if nouns:
+            print(word, "refers to", nouns[-1])
+    elif word[0].isupper() or word.lower() in ["car"]:
+        nouns.append(word)
